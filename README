@@ -2,6 +2,9 @@ Um catalogo de produto, lista de presentes ou qualquer coisa do gênero
 utilizando puramente HTML e JQuery.
 
 TODO:
+- definir coding guidelines:
+  - TAB eh 4 espacos?
+  - abrir e fechar chaves, sempre.
 - separar o arquivo de produtos, evitando assim a edição do arquivo do site e minimizando a chance de erros;
 - possibilitar ao usuário indicar a quantidade que ele quer comprar do produto (com opção de alteração desse valor no carrinho);
 - fazer modal com possibilidade de adição de fotos e conteúdo;
