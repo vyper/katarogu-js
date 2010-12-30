@@ -5,12 +5,13 @@ TODO:
 - definir coding guidelines:
   - TAB eh 4 espacos?
   - abrir e fechar chaves, sempre.
+- adicionar buscador
 - separar o arquivo de produtos, evitando assim a edição do arquivo do site e minimizando a chance de erros;
 - possibilitar ao usuário indicar a quantidade que ele quer comprar do produto (com opção de alteração desse valor no carrinho);
 - fazer modal com possibilidade de adição de fotos e conteúdo;
 - retirar dependência do plugin slimbox2 utilizado para fazer modal das imagens;
 - melhorar visualização do carrinho, colocando em modal a área útil é maior;
-- melhorar código javascript;
+- melhorar código javascript; 
 - melhorar a comunicação com proxy de pagamento (para possível port para PayPal);
 - portar todo o código para inglês, deixando a possibilidade de multi-idioma;
 

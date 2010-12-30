@@ -1,143 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>Lista de arrecadação</title>
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
-	  <link href="css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-  	<script type="text/javascript" src="js/slimbox2.js"></script>
-  	<script type="text/javascript">
-  	  // TODO: implementar quantidade
-  	  var itens = [
-          { id: 'acucareiro', nome: 'Açucareiro', preco: 23.00 }
-        , { id: 'assadeira-aluminio-redonda', nome: 'Assadeira alumínio (redonda)', preco: 9.90 }
-        , { id: 'assadeira-aluminio-retangular', nome: 'Assadeira alumínio (retangular)', preco: 19.90 }
-  	  ];
-  	  
-  	  var carrinho = new Array();
-  	  var valor    = 0;
-  	  function adicionar(i) {
-  	    carrinho[carrinho.length] = itens[i];
-  	    recarregarCarrinho();
-  	  }
-  	  
-  	  function recarregarCarrinho() {
-    	  $('#carrinho').empty();
-    	  $('#mensagem').empty();
-    	  valor = 0;
-    	  if (carrinho.length == 0)
-    	    $('#mensagem').append('Carrinho vazio ):');
-    	  else {
-    	    $.each(carrinho, function(i, v) {
-    	      $('#carrinho').append("<li>" + v.nome + " <a href='javascript:removerItem(" + i + ")'>X</a></li>");
-    	      valor = valor + v.preco;
-    	    });
-    	    
-  	      $('#carrinho').append('<li><a href="javascript:pagar()"><img src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/84x35-comprar.gif" /></a></li>');
-    	    $('#mensagem').append('Carrinho: (' + carrinho.length + ') R$ ' + float2moeda(valor.toString()));
-    	  }
-  	  }
-  	  
-  	  function removerItem(item) {
-  	    carrinho = jQuery.map(carrinho, function(v, i) {
-          return item != i ? v : null;
-        });
-        recarregarCarrinho();
-  	  }
-  	  
-  	  function pagar() {
-  	    $('input[name^="item"]').remove();
-  	    $.each(carrinho, function(i, v) {
-  	      item = i + 1;
-    	    $("#moeda").after(
-              '<input type="hidden" name="item_id_' + item + '" value="' + v.id + '" />'
-            + '<input type="hidden" name="item_descr_' + item + '" value="' + v.nome + '" />'
-            + '<input type="hidden" name="item_quant_' + item + '" value="1" />'
-            + '<input type="hidden" name="item_valor_' + item + '" value="' + float2moeda(v.preco) + '" />'
-            + '<input type="hidden" name="item_frete_' + item + '" value="0" />'
-            + '<input type="hidden" name="item_peso_' + item + '" value="0" />'
-    	    );
-    	  });
-    	  $('#fps').submit();
-  	  }
-  	  
-  	  function verCarrinho() {
-  	    recarregarCarrinho();
-  	    if ($('#carrinho').is(':visible'))
-  	      $('#carrinho').toggle();
-  	    else if (carrinho.length > 0)
-  	      $('#carrinho').show();
-  	  }
-  	  
-  	  $(document).ready(function() {
-  	    $.each(itens, function(i, item) {
-    	    $('.produto-lista').append(
-      	      '<li>'
-      	    + '<a href="img/itens/' + item.id + '.jpg" rel="lightbox" title="' + item.nome + '">'
-      	    + '<img src="img/itens/t/' + item.id + '.jpg" />'
-      	    + '</a>'
-      	    + '<p class="info">'
-      	    + item.nome
-      	    + '<span class="preco venda">R$ ' + float2moeda(item.preco) + '</span>'
-      	    + '</p>'
-      	    + '<a href="javascript:adicionar(' + i + ');" class="botao">Contribuir</a>'
-      	    + '</li>'
-    	    );
-  	    });
-  	    
-  	    
-  	    // gambiarra pra carregar o lightbox TODO: arrumar
-	    	jQuery(function($) {
-	        $("a[rel^='lightbox']").slimbox({/* Put custom options here */}, null, function(el) {
-		        return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
-	        });
-	      });
-      });
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Lista de arrecadação</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/slimbox2.js"></script>
+    
+    <script type="text/javascript" src="js/model.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+</head>
+<body>
+<ul id="barra-navegacao">
+    <li class="carrinho">
+	<a href="javascript:verCarrinho();" id="mensagem">Carrinho vazio ):</a>
+	<ul id="carrinho"></ul>
+    </li>
+</ul>
 
-      function float2moeda(num) {
-         x = 0;
-         if (num<0) {
-            num = Math.abs(num);
-            x = 1;
-         }
-         if (isNaN(num)) 
-           num = "0";
-         cents = Math.floor((num*100+0.5)%100);
+<h1>Lista de arrecadação</h1>
+<ul class="produto-lista"></ul>
 
-         num = Math.floor((num*100+0.5)/100).toString();
+<form target="_blank" id="fps" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
+    <input type="hidden" name="email_cobranca" value="vyper@maneh.org">
+    <input type="hidden" name="tipo" value="CP">
+    <input type="hidden" name="moeda" value="BRL" id="moeda">
+    <input type="hidden" name="tipo_frete" value="EN">
+</form>
 
-         if(cents < 10) cents = "0" + cents;
-         for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
-           num = num.substring(0,num.length-(4*i+3)) + '.' +num.substring(num.length-(4*i+3));
-         ret = num + ',' + cents;
-         if (x == 1) 
-          ret = ' - ' + ret;return ret;
-       }
-
-  	</script>
-	</head>
-	<body>
-	
-	  <ul id="barra-navegacao">
-	    <li class="carrinho">
-  	    <a href="javascript:verCarrinho();" id="mensagem">Carrinho vazio ):</a>
-	      <ul id="carrinho">
-	      </ul>
-  	  </li>
-	  </ul>
-	
-    <h1>Lista de arrecadação</h1>
-
-    <ul class="produto-lista">
-    </ul>
-
-    <form target="_blank" id="fps" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
-      <input type="hidden" name="email_cobranca" value="vyper@maneh.org">
-      <input type="hidden" name="tipo" value="CP">
-      <input type="hidden" name="moeda" value="BRL" id="moeda">
-
-      <input type="hidden" name="tipo_frete" value="EN">
-    </form>
-	</body>
+</body>
 </html>
