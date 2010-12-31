@@ -67,7 +67,7 @@ function removerItem(item) {
 function pagar() {
     $('input[name^="item"]').remove();
     var items = Cart.getAll();
-    var i = 0;
+    var i = 1;
     
     for( id in items ){
 	var item = items[id];
