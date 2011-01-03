@@ -3,15 +3,15 @@ a { text-decoration: none; }
 html, body, div, span, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
 pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana; }
 
-.preco.venda { color: #2e6ab1; }
+.price.sell { color: #2e6ab1; }
 
-.produto-lista {
+.products {
   list-style: none;
   margin: 2em 0px 0px 0px;
   padding: 0px;
 }
 
-.produto-lista li {
+.products li {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -35,7 +35,7 @@ p.info span {
   display: block;
 }
 
-ul#barra-navegacao {
+ul#navigation {
   width:250px;
   line-height: 50px;
   float: right;
@@ -48,28 +48,28 @@ ul#barra-navegacao {
   background-color:#ccc;
 }
 
-ul#barra-navegacao li.carrinho {
+ul#navigation li.cart {
   float: left;
 }
 
-ul#barra-navegacao li.carrinho a {
+ul#navigation li.cart a {
   padding-left: 2.5em;
-  background: transparent url(../img/carrinho.png) center left no-repeat;
+  background: transparent url(../img/cart.png) center left no-repeat;
   font-size:0.8em;
 }
 
-a.botao {
+a.button {
   padding:0.1em;
   background-color:#ccc;
   border: 1px solid gray;
   color:black;
 }
 
-a.botao:hover {
+a.button:hover {
   text-decoration:none;
 }
 
-#carrinho { 
+#cart { 
   overflow:auto;
   display:none;
   position: absolute;
@@ -85,14 +85,11 @@ a.botao:hover {
   padding-left: 1.5em;
 }
 
-#carrinho li {
-}
-
-#carrinho li a {
+#cart li a {
   padding: 0 1em 0 0 !important;
   margin: 0;
   float:right;
-  background: none /*transparent url(../img/remover.png) center right no-repeat*/ !important;
+  background: none !important;
   font-size:0.8em !important;
   display: inline;
 }

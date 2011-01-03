@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Lista de arrecadação</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Katagoru</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -12,17 +12,18 @@
     <script type="text/javascript" src="js/application.js"></script>
 </head>
 <body>
-<ul id="barra-navegacao">
-    <li class="carrinho">
-	<a href="javascript:verCarrinho();" id="mensagem">Carrinho vazio ):</a>
-	<ul id="carrinho"></ul>
+<ul id="navigation">
+    <li class="cart">
+	    <a href="javascript:viewCart();" id="message">Empty cart</a>
+	    <ul id="cart"></ul>
     </li>
 </ul>
 
-<h1>Lista de arrecadação</h1>
-<ul class="produto-lista"></ul>
+<h1>Katagoru</h1>
+<ul class="products"></ul>
 
 <form target="_blank" id="fps" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
+    <input type="hidden" name="encoding" value="utf-8" />
     <input type="hidden" name="email_cobranca" value="vyper@maneh.org">
     <input type="hidden" name="tipo" value="CP">
     <input type="hidden" name="moeda" value="BRL" id="moeda">
