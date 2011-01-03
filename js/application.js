@@ -69,6 +69,8 @@ function pay() {
     var i = 0;
     
     for( id in items ){
+	    i++;
+
 	    var item = items[id];
 	    $("#moeda").after(
 	        '<input type="hidden" name="item_id_' + i + '" value="' + item.id + '" />'
@@ -78,8 +80,6 @@ function pay() {
 	        + '<input type="hidden" name="item_frete_' + i + '" value="0" />'
 	        + '<input type="hidden" name="item_peso_' + i + '" value="0" />'
 	    );
-	
-	    i++;
     };
     
     $('#fps').submit();
