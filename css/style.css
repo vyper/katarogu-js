@@ -5,13 +5,13 @@ pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana; }
 
 .price.sell { color: #2e6ab1; }
 
-.products {
+#products {
   list-style: none;
   margin: 2em 0px 0px 0px;
   padding: 0px;
 }
 
-.products li {
+#products li {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -58,14 +58,15 @@ ul#navigation li.cart a {
   font-size:0.8em;
 }
 
-a.button {
+span.button {
   padding:0.1em;
   background-color:#ccc;
   border: 1px solid gray;
   color:black;
+  cursor: pointer;
 }
 
-a.button:hover {
+span.button:hover {
   text-decoration:none;
 }
 
@@ -94,3 +95,6 @@ a.button:hover {
   display: inline;
 }
 
+#message {
+  cursor: pointer;
+}

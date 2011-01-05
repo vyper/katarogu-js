@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Katagoru</title>
+    <title>Katarogu</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slimbox2.js"></script>
+    <script type="text/javascript" src="js/misc.js"></script>
     
     <script type="text/javascript" src="js/model.js"></script>
     <script type="text/javascript" src="js/application.js"></script>
@@ -14,13 +15,13 @@
 <body>
 <ul id="navigation">
     <li class="cart">
-	    <a href="javascript:viewCart();" id="message">Empty cart</a>
+	    <span onclick="Katarogu.toggleCartBox();" id="message">Empty cart</span>
 	    <ul id="cart"></ul>
     </li>
 </ul>
 
-<h1>Katagoru</h1>
-<ul class="products"></ul>
+<h1>Katarogu</h1>
+<ul id="products"></ul>
 
 <form target="_blank" id="fps" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
     <input type="hidden" name="encoding" value="utf-8" />
@@ -30,5 +31,6 @@
     <input type="hidden" name="tipo_frete" value="EN">
 </form>
 
+<script> $(document).ready( function() { Katarogu.render() }); </script>
 </body>
 </html>
