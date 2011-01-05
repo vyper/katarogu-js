@@ -66,30 +66,7 @@ Katarogu.prototype.render = function() {
     var productsContainer = $("#products");
     
     for( item_id in items ) {
-            var item = items[item_id];
-            
-            var li = $(
-                '<li>'
-                + '<a href="img/items/' + item.id + '.jpg" rel="lightbox" title="' + item.name + '">'
-                + '<img src="img/items/t/' + item.id + '.jpg" />'
-                + '</a>'
-                + '<p class="info">'
-                + item.name
-                + '<span class="price sell">R$ ' + float2moeda(item.price) + '</span>'
-                + '</p>'
-                + '</li>'
-            );
-            
-            var addButton = $( '<span class="button">Add to cart</span>' );
-            addButton.get(0).item_id = item_id;
-            
-            addButton.click( function() {
-                _this.cart.add( _this.stock.items[this.item_id] );
-                _this.renderCartBox();
-            });
-            
-            li.append( addButton );
-            productsContainer.append( li );
+            productsContainer.append( items[item_id].render() );
     };
 
     // gambiarra pra carregar o lightbox TODO: arrumar

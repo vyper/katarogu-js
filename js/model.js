@@ -17,8 +17,9 @@ Model.prototype.init = function( items ) {
 Model.prototype.add = function( item ) {
     if( typeof item == 'object' ) {
         
+        var product = new Product( item );
         if( !this.items[item.id] ) {
-            this.items[item.id] = item;
+            this.items[item.id] = product;
         }
         else {
             this.items[item.id].count = this.items[item.id].count + item.count;
