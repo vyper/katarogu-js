@@ -11,27 +11,20 @@ function Product( item_obj ) {
 
 Product.prototype.render = function() {
     var _this = this;
+    var result = $("<li></li>");
     
-    var li = $(
-        '<li>'
-        + '<a href="img/items/' + this.id + '.jpg" rel="lightbox" title="' + this.name + '">'
-        + '<img src="img/items/t/' + this.id + '.jpg" />'
-        + '</a>'
-        + '<p class="info">'
-        + this.name
-        + '<span class="price sell">R$ ' + float2moeda(this.price) + '</span>'
-        + '</p>'
-        + '</li>'
-    );
+    var productMarkup = '<a href="img/items/${id}.jpg" rel="lightbox" title="${name}"><img src="img/items/t/${id}.jpg" /></a>'
+                      + '<p class="info">${name}<span class="price sell">R$ ${price}</span></p>';
+    
+    $.template( "productTemplate", productMarkup );
+    $.tmpl( "productTemplate", this ).appendTo( result );
 
     var addButton = $( '<span class="button">Add to cart</span>' );
-
     addButton.click( function() {
         Katarogu.cart.add( _this );
         Katarogu.renderCartBox();
     });
 
-    li.append( addButton );
-    
-    return li;
+    result.append( addButton );
+    return result;
 }
