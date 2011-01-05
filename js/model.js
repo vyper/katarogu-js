@@ -10,22 +10,22 @@ function Model() {
 
 Model.prototype.init = function( items ) {
     for( var i = 0; i < items.length; i++ ) {
-	this.add( items[i] );
+        this.add( items[i] );
     }
 }
 
 Model.prototype.add = function( item ) {
     if( typeof item == 'object' ) {
-	
-	if( !this.items[item.id] ) {
-	    this.items[item.id] = item;
-	}
-	else {
-	    this.items[item.id].count = this.items[item.id].count + item.count;
-	}
+        
+        if( !this.items[item.id] ) {
+            this.items[item.id] = item;
+        }
+        else {
+            this.items[item.id].count = this.items[item.id].count + item.count;
+        }
     }
     else {
-	throw "Cannot add a non-object dude!";
+        throw "Cannot add a non-object dude!";
     }
 }
 
@@ -34,15 +34,15 @@ Model.prototype.delete = function( id ) {
     
     item.count = item.count - 1;
     if( item.count <= 0 ) {
-	delete this.items[id];
+        delete this.items[id];
     }
 }
 
 Model.prototype.findByName = function( name ) {
     for( item in this.items ) {
-	if( item.name.match( name ) ) {
-	    return item;
-	}
+        if( item.name.match( name ) ) {
+            return item;
+        }
     }
     
     return null;
@@ -92,7 +92,7 @@ Cart.prototype.countItems = function() {
     var result = 0;
     
     for( id in items ) {
-	result = result + items[id].count;
+        result = result + items[id].count;
     }
     
     return result;
@@ -102,7 +102,7 @@ Cart.prototype.getTotal = function() {
     this.total = 0;
     
     for( item in this.items ) {
-	this.total = this.total + ( this.items[item].price * this.items[item].count );
+        this.total = this.total + ( this.items[item].price * this.items[item].count );
     }
     
     return this.total;
