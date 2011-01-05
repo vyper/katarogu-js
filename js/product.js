@@ -14,12 +14,12 @@ Product.prototype.render = function() {
     var result = $("<li></li>");
     
     var productMarkup = '<a href="img/items/${id}.jpg" rel="lightbox" title="${name}"><img src="img/items/t/${id}.jpg" /></a>'
-                      + '<p class="info">${name}<span class="price sell">R$ ${price}</span></p>';
+                      + '<p class="info">${name}<span class="price sell">R$ ${float2moeda(price.toString())}</span></p>';
     
     $.template( "productTemplate", productMarkup );
     $.tmpl( "productTemplate", this ).appendTo( result );
 
-    var addButton = $( '<span class="button">Add to cart</span>' );
+    var addButton = $( '<a href="#addCart" class="button">Add to cart</a>' );
     addButton.click( function() {
         Katarogu.cart.add( _this );
         Katarogu.renderCartBox();

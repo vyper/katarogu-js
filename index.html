@@ -17,7 +17,7 @@
 <body>
 <ul id="navigation">
     <li class="cart">
-	    <span onclick="return Katarogu.toggleCartBox();" id="message">Empty cart</span>
+	    <a href="#toggleCartBox" id="message">Empty cart</a>
 	    <ul id="cart"></ul>
     </li>
 </ul>
@@ -25,13 +25,7 @@
 <h1>Katarogu</h1>
 <ul id="products"></ul>
 
-<form target="_blank" id="fps" method="post" action="https://pagseguro.uol.com.br/checkout/checkout.jhtml">
-    <input type="hidden" name="encoding" value="utf-8" />
-    <input type="hidden" name="email_cobranca" value="vyper@maneh.org">
-    <input type="hidden" name="tipo" value="CP">
-    <input type="hidden" name="moeda" value="BRL" id="moeda">
-    <input type="hidden" name="tipo_frete" value="EN">
-</form>
+<form target="_blank" id="frequest" method="post"></form>
 
 <script> 
     $(document).ready( function() { Katarogu.render() }); 

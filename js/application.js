@@ -25,21 +25,23 @@ var Katarogu = function( itemsPerPage ) {
 
 Katarogu.prototype.renderCartBox = function() {
     var _this = this;
-    
-    $('#cart').empty();
-    $('#message').empty();
+    var $cart = $('#cart');
+    var $message = $('#message');
+
+    $cart.empty();
+    $message.empty();
     
     var total = this.cart.getTotal();
     
     if (this.cart.countItems() == 0) {
-        $('#message').append('Empty cart');
+        $message.append('Empty cart');
         this.toggleCartBox();
     } else {
         var items = this.cart.getAll();
-        
+
         for( item_id in items ) {
             var item = items[item_id];
-            var li = $( "<li>" + item.name + "("+ item.count +") <span style='cursor: pointer;'>X</span></li>" );
+            var li = $( "<li>" + item.name + " ("+ item.count +") <a href='#removeItem'>X</a></li>" );
             li.get(0).item_id = item_id;
             
             li.click( function() {
@@ -47,16 +49,21 @@ Katarogu.prototype.renderCartBox = function() {
                 _this.renderCartBox();
             });
             
-            $('#cart').append( li );
+            $cart.append( li );
         };
         
-        $('#cart').append(
-            '<li><a href="javascript:pay()"><img src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/84x35-comprar.gif" /></a></li>'
+        $cart.append(
+            '<li><a href="#pay">Pay</a></li>'
         );
     
-        $('#message').append(
+        $message.append(
             'cart: (' + this.cart.countItems() + ') R$ ' + float2moeda( total.toString() )
         );
+
+        // event TODO: identificar melhor lugar pra colocar
+        $('a[href="#pay"]').click(function() {
+            _this.pay();
+        });
     }
 }
     
@@ -69,6 +76,11 @@ Katarogu.prototype.render = function() {
             productsContainer.append( items[item_id].render() );
     };
 
+    // events TODO: identificar melhor lugar para colocar
+    $('a[href="#toggleCartBox"]').click(function() { 
+        _this.toggleCartBox(); 
+    });
+    
     // gambiarra pra carregar o lightbox TODO: arrumar
     jQuery(function($) {
             $("a[rel^='lightbox']").slimbox({/* Put custom options here */}, null, function(el) {
@@ -78,25 +90,33 @@ Katarogu.prototype.render = function() {
 }
 
 Katarogu.prototype.pay = function() {
-    $('input[name^="item"]').remove();
     var items = this.cart.getAll();
-    var i = 1;
     
+    var $frequest = $('#frequest');
+    $frequest.empty();
+    $frequest.attr("action", "https://pagseguro.uol.com.br/checkout/checkout.jhtml");
+    
+    // PagSeguro
+    var _form = '<input type="hidden" name="encoding" value="utf-8" />' + 
+                '<input type="hidden" name="email_cobranca" value="vyper@maneh.org" />' + 
+                '<input type="hidden" name="tipo" value="CP" />' +
+                '<input type="hidden" name="moeda" value="BRL" id="moeda" />' +
+                '<input type="hidden" name="tipo_frete" value="EN" />';
+    
+    var i = 1;
     for( id in items ){
-            i++;
-
             var item = items[id];
-            $("#moeda").after(
-                '<input type="hidden" name="item_id_' + i + '" value="' + item.id + '" />'
-                + '<input type="hidden" name="item_descr_' + i + '" value="' + item.name + '" />'
-                + '<input type="hidden" name="item_quant_' + i + '" value="1" />'
-                + '<input type="hidden" name="item_valor_' + i + '" value="' + float2moeda(item.price) + '" />'
-                + '<input type="hidden" name="item_frete_' + i + '" value="0" />'
-                + '<input type="hidden" name="item_peso_' + i + '" value="0" />'
-            );
+            _form = _form + '<input type="hidden" name="item_id_' + i + '" value="' + item.id + '" />' +
+                            '<input type="hidden" name="item_descr_' + i + '" value="' + item.name + '" />' +
+                            '<input type="hidden" name="item_quant_' + i + '" value="1" />' +
+                            '<input type="hidden" name="item_valor_' + i + '" value="' + float2moeda(item.price) + '" />' +
+                            '<input type="hidden" name="item_frete_' + i + '" value="0" />' +
+                            '<input type="hidden" name="item_peso_' + i + '" value="0" />';
+            i++;
     };
     
-    $('#fps').submit();
+    $frequest.append(_form);
+    $frequest.submit();
 }
 
 Katarogu.prototype.toggleCartBox = function() {

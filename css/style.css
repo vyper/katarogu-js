@@ -58,7 +58,7 @@ ul#navigation li.cart a {
   font-size:0.8em;
 }
 
-span.button {
+a.button {
   padding:0.1em;
   background-color:#ccc;
   border: 1px solid gray;
@@ -66,7 +66,7 @@ span.button {
   cursor: pointer;
 }
 
-span.button:hover {
+a.button:hover {
   text-decoration:none;
 }
 
