@@ -19,17 +19,21 @@
     <script type="text/javascript" src="js/lib/application.js"></script>
 </head>
 <body>
-    <ul id="navigation">
-        <li class="cart">
-	        <a href="#toggleCartBox" id="message">Empty cart</a>
-	        <ul id="cart"></ul>
-        </li>
-    </ul>
+    <div id="header">
+        <ul id="navigation">
+            <li class="cart">
+	            <a href="#toggleCartBox" id="message">Empty cart</a>
+	            <ul id="cart"></ul>
+            </li>
+        </ul>
 
-    <h1>Katarogu</h1>
-    <ul id="products"></ul>
-
-    <form target="_blank" id="frequest" method="post"></form>
+        <h1>Katarogu</h1>
+    </div>
+    
+    <div id="content">
+        <ul id="products"></ul>
+        <form target="_blank" id="frequest" method="post"></form>
+    </div>
 
     <script> 
         $(document).ready( function() { Katarogu.render() }); 

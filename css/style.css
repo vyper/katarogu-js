@@ -35,6 +35,19 @@ p.info span {
   display: block;
 }
 
+div#header { 
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    background-color:white;
+    z-index: 2;
+    padding-right:0.5em;
+}
+
+div#content {
+    padding-top:4.5em;
+}
+
 ul#navigation {
   width:250px;
   line-height: 50px;
