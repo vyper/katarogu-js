@@ -3,32 +3,36 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Katarogu</title>
+
     <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.tmpl.min.js"></script>
-    <script type="text/javascript" src="js/slimbox2.js"></script>
-    <script type="text/javascript" src="js/misc.js"></script>
-    
-    <script type="text/javascript" src="js/product.js"></script>
-    <script type="text/javascript" src="js/model.js"></script>
-    <script type="text/javascript" src="js/application.js"></script>
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/items.js"></script>
+
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/lib/slimbox2.js"></script>
+    <script type="text/javascript" src="js/lib/misc.js"></script>
+    <script type="text/javascript" src="js/lib/product.js"></script>
+    <script type="text/javascript" src="js/lib/model.js"></script>
+    <script type="text/javascript" src="js/lib/application.js"></script>
 </head>
 <body>
-<ul id="navigation">
-    <li class="cart">
-	    <a href="#toggleCartBox" id="message">Empty cart</a>
-	    <ul id="cart"></ul>
-    </li>
-</ul>
+    <ul id="navigation">
+        <li class="cart">
+	        <a href="#toggleCartBox" id="message">Empty cart</a>
+	        <ul id="cart"></ul>
+        </li>
+    </ul>
 
-<h1>Katarogu</h1>
-<ul id="products"></ul>
+    <h1>Katarogu</h1>
+    <ul id="products"></ul>
 
-<form target="_blank" id="frequest" method="post"></form>
+    <form target="_blank" id="frequest" method="post"></form>
 
-<script> 
-    $(document).ready( function() { Katarogu.render() }); 
-</script>
+    <script> 
+        $(document).ready( function() { Katarogu.render() }); 
+    </script>
 </body>
 </html>
