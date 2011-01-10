@@ -76,11 +76,7 @@ Katarogu.prototype.render = function() {
     });
     
     // gambiarra pra carregar o lightbox TODO: arrumar
-    jQuery(function($) {
-            $("a[rel^='lightbox']").slimbox({/* Put custom options here */}, null, function(el) {
-                return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
-            });
-    });    
+    $("a[rel^='lightbox']").colorbox({transition:"none", width:"75%", height:"75%"});
 }
 
 Katarogu.prototype.pay = function() {
