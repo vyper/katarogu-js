@@ -19,16 +19,16 @@ var Katarogu = function( itemsPerPage ) {
 
 Katarogu.prototype.renderCartBox = function() {
     var _this = this;
-    var $cart = $('#cart');
-    var $message = $('#message');
+    var cart = $('#cart');
+    var message = $('#message');
 
-    $cart.empty();
-    $message.empty();
+    cart.empty();
+    message.empty();
     
     var total = this.cart.getTotal();
     
     if (this.cart.countItems() == 0) {
-        $message.append('Empty cart');
+        message.append('Empty cart');
         this.toggleCartBox();
     } else {
         var items = this.cart.getAll();
@@ -43,14 +43,14 @@ Katarogu.prototype.renderCartBox = function() {
                 _this.renderCartBox();
             });
             
-            $cart.append( li );
+            cart.append( li );
         };
         
-        $cart.append(
+        cart.append(
             '<li><a href="#pay">Pay</a></li>'
         );
     
-        $message.append(
+        message.append(
             'cart: (' + this.cart.countItems() + ') R$ ' + float2moeda( total.toString() )
         );
 
