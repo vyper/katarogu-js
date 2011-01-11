@@ -63,13 +63,14 @@ Katarogu.prototype.renderCartBox = function() {
     
 Katarogu.prototype.render = function() {
     var _this = this;
-    var items = this.stock.getAll( this.itemsPerPage );
-    var productsContainer = $("#products");
     
-    for( item_id in items ) {
-            productsContainer.append( items[item_id].render() );
-    };
-
+    $( "#searchInput" ).val(null);
+    $( "#searchInput" ).keyup( function() { 
+        _this.renderContainer();
+    });
+    
+    this.renderContainer();
+    
     // events TODO: identificar melhor lugar para colocar
     $('a[href="#toggleCartBox"]').click(function() { 
         _this.toggleCartBox(); 
@@ -77,6 +78,16 @@ Katarogu.prototype.render = function() {
     
     // gambiarra pra carregar o lightbox TODO: arrumar
     $("a[rel^='lightbox']").colorbox({transition:"none", width:"75%", height:"75%"});
+}
+
+Katarogu.prototype.renderContainer = function() {
+    var items = this.stock.getAll( $( "#searchInput" ).val() );
+    var productsContainer = $("#products");
+    
+    productsContainer.empty();
+    for( item_id in items ) {
+            productsContainer.append( items[item_id].render() );
+    };
 }
 
 Katarogu.prototype.pay = function() {

@@ -49,8 +49,28 @@ Model.prototype.findByName = function( name ) {
     return null;
 }
 
-Model.prototype.getAll = function() {
-    return this.items;
+Model.prototype.search = function( searchString ) {
+    var result = new Array();
+    var pattern = new RegExp( searchString, "i" );
+    
+    for( item_key in this.items ) {
+        item = this.items[item_key];
+        
+        if( item.name.match( pattern ) ) {
+            result.push( item );
+        }
+    }
+    
+    return ( result.length > 0 ) ? result : null;
+}
+
+Model.prototype.getAll = function( searchString ) {
+    if( searchString && searchString.length >= 3 ) {
+        return this.search( searchString );
+    }
+    else {
+        return this.items;
+    }
 }
 
 /**
