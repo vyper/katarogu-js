@@ -82,9 +82,9 @@ Katarogu.prototype.render = function() {
 Katarogu.prototype.pay = function() {
     var items = this.cart.getAll();
     
-    var $frequest = $('#frequest');
-    $frequest.empty();
-    $frequest.attr("action", "https://pagseguro.uol.com.br/checkout/checkout.jhtml");
+    var frequest = $('#frequest');
+    frequest.empty();
+    frequest.attr("action", "https://pagseguro.uol.com.br/checkout/checkout.jhtml");
     
     // PagSeguro
     var _form = '<input type="hidden" name="encoding" value="utf-8" />' + 
@@ -105,8 +105,8 @@ Katarogu.prototype.pay = function() {
             i++;
     };
     
-    $frequest.append(_form);
-    $frequest.submit();
+    frequest.append(_form);
+    frequest.submit();
 }
 
 Katarogu.prototype.toggleCartBox = function() {
