@@ -102,7 +102,7 @@ Katarogu.prototype.pay = function() {
     
     // PagSeguro
     var _form = '<input type="hidden" name="encoding" value="utf-8" />' + 
-                '<input type="hidden" name="email_cobranca" value="vyper@maneh.org" />' + 
+                '<input type="hidden" name="email_cobranca" value="' + config.admin.email + '" />' + 
                 '<input type="hidden" name="tipo" value="CP" />' +
                 '<input type="hidden" name="moeda" value="BRL" id="moeda" />' +
                 '<input type="hidden" name="tipo_frete" value="EN" />';
@@ -112,7 +112,7 @@ Katarogu.prototype.pay = function() {
             var item = items[id];
             _form = _form + '<input type="hidden" name="item_id_' + i + '" value="' + item.id + '" />' +
                             '<input type="hidden" name="item_descr_' + i + '" value="' + item.name + '" />' +
-                            '<input type="hidden" name="item_quant_' + i + '" value="1" />' +
+                            '<input type="hidden" name="item_quant_' + i + '" value="' + item.count + '" />' +
                             '<input type="hidden" name="item_valor_' + i + '" value="' + float2moeda(item.price) + '" />' +
                             '<input type="hidden" name="item_frete_' + i + '" value="0" />' +
                             '<input type="hidden" name="item_peso_' + i + '" value="0" />';
