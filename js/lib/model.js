@@ -50,7 +50,6 @@ Model.prototype.findByName = function( name ) {
 }
 
 Model.prototype.search = function( searchString ) {
-    console.log(searchString);
     var result = new Array();
     var pattern = new RegExp( searchString.skipAccents(), "i" );
     
