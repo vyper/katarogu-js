@@ -27,7 +27,7 @@ Katarogu.prototype.renderCartBox = function() {
     var total = this.cart.getTotal();
     
     if (this.cart.countItems() == 0) {
-        message.append('Empty cart');
+        message.append(i18n.cart.empty);
         this.toggleCartBox();
     } else {
         var items = this.cart.getAll();
@@ -46,11 +46,11 @@ Katarogu.prototype.renderCartBox = function() {
         };
         
         cart.append(
-            '<li><a href="#pay">Pay</a></li>'
+            '<li><a href="#pay">' + i18n.cart.pay + '</a></li>'
         );
     
         message.append(
-            'cart: (' + this.cart.countItems() + ') R$ ' + float2moeda( total.toString() )
+            i18n.cart.name + ': (' + this.cart.countItems() + ') R$ ' + float2moeda( total.toString() )
         );
 
         // event TODO: identificar melhor lugar pra colocar

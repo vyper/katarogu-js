@@ -19,7 +19,7 @@ Product.prototype.render = function() {
     $.template( "productTemplate", productMarkup );
     $.tmpl( "productTemplate", this ).appendTo( result );
 
-    var addButton = $( '<a href="#addCart" class="button">Add to cart</a>' );
+    var addButton = $( '<a href="#addCart" class="button">' + i18n.cart.add + '</a>' );
     addButton.click( function() {
         Katarogu.cart.add( _this );
         Katarogu.renderCartBox();
