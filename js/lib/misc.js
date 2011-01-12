@@ -1,3 +1,34 @@
+String.prototype.skipAccents = function() {
+    var string = this.toString();
+    
+    var patterns = [
+        ["[àáâãäå]", "a"],
+        ["[ÀÁÂÃÄÅ]", "A"],
+        ["ç", "c"],
+        ["Ç", "C"],
+        ["[èéêë]", "e"],
+        ["[ÈÉÊË]", "E"],
+        ["[ìíîï]", "i"],
+        ["[ÌÍÎÏ]", "I"],
+        ["ñ", "n"],
+        ["Ñ", "N"],
+        ["[òóôõö]", "o"],
+        ["[ÒÓÔÕÖ]", "O"],
+        ["[ùúûü]", "u"],
+        ["[ÙÚÛÜ]", "u"],
+        ["[ýÿ]", "y"],
+        ["[ÝŸ]", "y"],
+    ];
+    
+    for ( var i=0; i < patterns.length; ++i ) {
+        string = string.replace( new RegExp(patterns[i][0], "g" ), function() {
+                return patterns[i][1];
+        });
+    }
+    
+    return string;
+}
+
 function float2moeda(num) {
     x = 0;
     if (num<0) {

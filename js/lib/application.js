@@ -14,7 +14,10 @@
 var Katarogu = function( itemsPerPage ) {
     this.cart = new Cart();
     this.stock = new Stock( items );
+    
+    //TODO: Move this to config.js
     this.itemsPerPage = ( itemsPerPage ) ? itemsPerPage : 20;
+    this.searchInputTimeout = 150;
 }
 
 Katarogu.prototype.renderCartBox = function() {
@@ -66,7 +69,11 @@ Katarogu.prototype.render = function() {
     
     $( "#searchInput" ).val(null);
     $( "#searchInput" ).keyup( function() { 
-        _this.renderContainer();
+        clearTimeout(this.timeout);
+        
+        this.timeout = setTimeout( function() {
+            _this.renderContainer();
+        }, _this.searchInputTimeout);
     });
     
     this.renderContainer();

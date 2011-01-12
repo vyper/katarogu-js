@@ -51,12 +51,12 @@ Model.prototype.findByName = function( name ) {
 
 Model.prototype.search = function( searchString ) {
     var result = new Array();
-    var pattern = new RegExp( searchString, "i" );
+    var pattern = new RegExp( searchString.skipAccents(), "i" );
     
     for( item_key in this.items ) {
         item = this.items[item_key];
         
-        if( item.name.match( pattern ) ) {
+        if( item.name.skipAccents().match( pattern ) ) {
             result.push( item );
         }
     }
@@ -65,7 +65,7 @@ Model.prototype.search = function( searchString ) {
 }
 
 Model.prototype.getAll = function( searchString ) {
-    if( searchString && searchString.length >= 3 ) {
+    if( searchString ) {
         return this.search( searchString );
     }
     else {
