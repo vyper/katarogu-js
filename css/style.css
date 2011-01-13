@@ -2,7 +2,7 @@
 /************** GENERAL ***************/
 /**************************************/
 img { border:0; }
-html, body { padding:0; margin: 0; }
+html, body { height: 100%; padding:0; margin: 0; }
 html, body, div, span, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana, Tahoma; }
 input { font-size: 0.8em; }
 
@@ -14,6 +14,8 @@ input { font-size: 0.8em; }
 /**************************************/
 /************* STRUCTURE **************/
 /**************************************/
+#wrapper { min-height: 100%; height: 100%; position: relative; }
+
 div#header { 
     background-color:black;
     border-top: 0.5em solid #202529;
@@ -26,10 +28,12 @@ div#header {
 }
 
 div#content {
-    margin-top:4em;
+    height:auto;
+    margin-top:5em;
     clear:left;
-    margin-bottom:4em;
+    margin-bottom:3em;
     display:block;
+    overflow: auto;
 }
 
 div#footer {
@@ -40,6 +44,7 @@ div#footer {
     border-top: solid #4C4C4D 0.2em;
     position:fixed;
     bottom:0;
+    left:0;
 }
 
 /**************************************/
@@ -102,7 +107,7 @@ div#generator a:hover {
   display:none;
   position: absolute;
   background-color:#ccc;
-  width:233px;
+  width:200px;
   height:100px;
   clear:both;
   z-index:1;
@@ -126,6 +131,9 @@ div#generator a:hover {
   cursor: pointer;
 }
 
+/**************************************/
+/************** PRODUCTS **************/
+/**************************************/
 .price.sell { color: #2e6ab1; }
 
 #products {
