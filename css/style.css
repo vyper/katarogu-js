@@ -50,6 +50,12 @@ div#content {
     padding-top:4.5em;
 }
 
+div#footer {
+    clear:both;
+    float: right;
+    padding: 0.8em;
+}
+
 ul.navigation {
   width:250px;
   float: right;
