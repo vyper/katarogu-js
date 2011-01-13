@@ -20,17 +20,16 @@
 </head>
 <body>
     <div id="header">
-        <ul class="navigation">
-            <li class="cart">
-                    <a href="#toggleCartBox" id="message">Empty cart</a>
-                    <ul id="cart"></ul>
-            </li>
-        </ul>
-        <ul class="navigation">
-            <li class="cart">
-                <input type="text" id="searchInput" />
-            </li>
-        </ul>
+        <div id="navigation">
+            <a href="#toggleCartBox" id="message">Empty cart</a>
+            <ul id="cart"></ul>
+        </div>
+
+        <div id="search">
+            <form name="fsearch">
+                <label for="searchInput">Search: <input type="text" name="searchInput" id="searchInput" /></label>
+            </form>
+        </div>
 
         <h1>Katarogu</h1>
     </div>
@@ -41,7 +40,9 @@
     </div>
 
     <div id="footer">
-        <p>powered by <a href="http://katarogu.mcorp.com.br/" target="_blank">Katarogu</a></p>
+        <div id="generator">
+            Powered by <a href="http://katarogu.mcorp.com.br/" target="_blank">Katarogu</a>
+        </div>
     </div>
 
     <script> 

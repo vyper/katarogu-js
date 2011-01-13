@@ -1,97 +1,102 @@
+/**************************************/
+/************** GENERAL ***************/
+/**************************************/
+img { border:0; }
+html, body { padding:0; margin: 0; }
+html, body, div, span, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana, Tahoma; }
+input { font-size: 0.8em; }
+
+/**************************************/
+/************* EXTERNALS **************/
+/**************************************/
 @import url('colorbox.css') screen;
 
-img { border:0; }
-a { text-decoration: none; }
-html, body, div, span, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
-pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana; }
-
-.price.sell { color: #2e6ab1; }
-
-#products {
-  list-style: none;
-  margin: 2em 0px 0px 0px;
-  padding: 0px;
-}
-
-#products li {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  height: 190px;
-  width: 140px;
-  text-align: center;
-  float: left;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #dddddd;
-  position: relative;
-}
-
-p.info {
-  min-height: 65px;
-  margin:0;
-  font-size:0.8em;
-}
-
-p.info span {
-  display: block;
-}
-
+/**************************************/
+/************* STRUCTURE **************/
+/**************************************/
 div#header { 
+    background-color:black;
+    border-top: 0.5em solid #202529;
     position: fixed; 
     width: 100%;
     top: 0;
-    background-color:white;
     z-index: 2;
     padding-right:0.5em;
+    border-bottom: solid #4C4C4D 0.2em;
 }
 
 div#content {
-    padding-top:4.5em;
+    margin-top:4em;
+    clear:left;
+    margin-bottom:4em;
+    display:block;
 }
 
 div#footer {
     clear:both;
-    float: right;
-    padding: 0.8em;
+    padding: 0.5em;
+    width: 100%;
+    background-color: #202529;
+    border-top: solid #4C4C4D 0.2em;
+    position:fixed;
+    bottom:0;
 }
 
-ul.navigation {
-  width:250px;
-  float: right;
-  /* clear: both; */
-  /* line-height: 50px; */
-  height: 30px;
-  font-size: 1.2em;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-left:1em;
-  background-color:#ccc;
+/**************************************/
+/*************** HEADER ***************/
+/**************************************/
+div#header h1 {
+    color: #92C0FB;
+    padding-left: 0.5em;
 }
 
-ul.navigation li.cart {
-  float: left;
+div#navigation {
+    float: right; 
+    height: 1.5em;
+    font-size: 1.2em;
+    margin: 0 1em 0 0;
+    padding: 0 1em 0 1em;
+    background-color: #202529;
 }
 
-ul.navigation li.cart a {
-  padding-left: 2.5em;
-  background: transparent url(../img/cart.png) center left no-repeat;
-  font-size:0.8em;
+div#navigation a {
+    color: #FD088D;
+    text-decoration: none;
+    padding-left: 2.5em;
+    background: transparent url(../img/cart.png) center left no-repeat;
+    font-size:0.8em;
 }
 
-a.button {
-  padding:0.1em;
-  background-color:#ccc;
-  border: 1px solid gray;
-  color:black;
-  cursor: pointer;
+div#search {
+    color:white;
+    position: relative;
+    margin:1.5em 1em 0 0;
+    float:right;
+    clear:right;
 }
 
-a.button:hover {
-  text-decoration:none;
+/**************************************/
+/*************** HEADER ***************/
+/**************************************/
+div#generator {
+    color:white;
+    font-size:0.7em;
+    float:right;
+    margin-right:2em;
 }
 
+div#generator a {
+    color: #FD088D;
+    text-decoration: none;
+}
+
+div#generator a:hover {
+    text-decoration: underline;
+}
+
+/**************************************/
+/**************** CART ****************/
+/**************************************/
 #cart { 
   overflow:auto;
   display:none;
@@ -120,3 +125,44 @@ a.button:hover {
 #message {
   cursor: pointer;
 }
+
+.price.sell { color: #2e6ab1; }
+
+#products {
+    list-style: none;
+    margin: 2em 0 0 0.5em;
+    padding: 0px;
+}
+
+#products li {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  height: 190px;
+  width: 140px;
+  text-align: center;
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  position: relative;
+}
+
+p.info {
+  min-height: 65px;
+  margin:0;
+  font-size:0.8em;
+}
+
+p.info span {
+  display: block;
+}
+
+a.button {
+  padding:0.1em;
+  background-color:#ccc;
+  border: 1px solid gray;
+  color:black;
+  cursor: pointer;
+}
+
