@@ -22,9 +22,15 @@
     <div id="wrapper">
         <div id="header">
             <div id="navigation">
-                <a href="#toggleCartBox" id="message">Empty cart</a>
-                <ul id="cart"></ul>
+                <a href="#toggleCartBox" id="message" title="Cart">Empty cart</a>
             </div>
+
+	        <div id="cart">
+	            <div id="toggleCartBox">
+                    <table id="cartItems">
+                    </table>
+		        </div>
+	        </div>
 
             <div id="search">
                 <form name="fsearch">
@@ -48,7 +54,7 @@
     </div>
 
     <script> 
-        $(document).ready( function() { Katarogu.render() }); 
+        $(document).ready( function() { Katarogu.render(); }); 
     </script>
 </body>
 </html>

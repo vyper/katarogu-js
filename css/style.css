@@ -1,15 +1,19 @@
 /**************************************/
+/************* EXTERNALS **************/
+/**************************************/
+@import url('colorbox.css') screen;
+
+/**************************************/
 /************** GENERAL ***************/
 /**************************************/
 img { border:0; }
 html, body { height: 100%; padding:0; margin: 0; }
 html, body, div, span, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { font-family: Verdana, Tahoma; }
 input { font-size: 0.8em; }
-
-/**************************************/
-/************* EXTERNALS **************/
-/**************************************/
-@import url('colorbox.css') screen;
+.center { text-align:center; }
+.right { text-align: right; }
+.warning { color: red; font-weight: bold; }
+.noborder { border:0 !important; }
 
 /**************************************/
 /************* STRUCTURE **************/
@@ -102,33 +106,19 @@ div#generator a:hover {
 /**************************************/
 /**************** CART ****************/
 /**************************************/
-#cart { 
-  overflow:auto;
-  display:none;
-  position: absolute;
-  background-color:#ccc;
-  width:200px;
-  height:100px;
-  clear:both;
-  z-index:1;
-  font-size:0.6em;
-  line-height: 1.5em;
-  margin: 0;
-  padding: 0;
-  padding-left: 1.5em;
+#cart {
+    display: none;
 }
 
-#cart li a {
-  padding: 0 1em 0 0 !important;
-  margin: 0;
-  float:right;
-  background: none !important;
-  font-size:0.8em !important;
-  display: inline;
+#cartItems { width: 100%; }
+#cartItems tr th {
+    color: #FD088D;
+    background-color: #202529;
+    border-bottom: solid #4C4C4D 0.2em;
 }
-
-#message {
-  cursor: pointer;
+#cartItems tr td {
+    border-bottom: solid #4C4C4D 0.1em;
+    padding: 0.3em;
 }
 
 /**************************************/
@@ -167,10 +157,14 @@ p.info span {
 }
 
 a.button {
-  padding:0.1em;
+  padding:0.2em;
+  text-decoration: none;
   background-color:#ccc;
   border: 1px solid gray;
   color:black;
   cursor: pointer;
 }
 
+a.button:hover {
+    color: #FD088D;
+}

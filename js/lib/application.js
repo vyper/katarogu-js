@@ -18,37 +18,39 @@ var Katarogu = function() {
 
 Katarogu.prototype.renderCartBox = function() {
     var _this = this;
-    var cart = $('#cart');
     var message = $('#message');
+    var cartItems = $('#cartItems');
 
-    cart.empty();
     message.empty();
+    cartItems.empty();
     
     var total = this.cart.getTotal();
-    
+
     if (this.cart.countItems() == 0) {
         message.append(i18n.cart.empty);
-        this.toggleCartBox();
+        cartItems.append($('<tr><td class="center warning noborder">' + i18n.cart.empty + '</td></tr>'));
     } else {
+        cartItems.append('<tr><th>' + i18n.cart.item + '</th><th>' + i18n.cart.quantity + '</th><th>&nbsp;</th></tr>');
+
         var items = this.cart.getAll();
 
         for( item_id in items ) {
             var item = items[item_id];
-            var li = $( "<li>" + item.name + " ("+ item.count +") <a href='#removeItem'>X</a></li>" );
-            li.get(0).item_id = item_id;
-            
-            li.click( function() {
+            var tr = $('<tr><td>' + item.name + '</td><td class="center">' + item.count + '</td><td class="center"><a href="#removeItem">X</a></td></tr>');
+
+            tr.get(0).item_id = item_id;
+            tr.click( function() {
                 _this.cart.delete( this.item_id );
                 _this.renderCartBox();
             });
             
-            cart.append( li );
+            cartItems.append( tr );
         };
         
-        cart.append(
-            '<li><a href="#pay">' + i18n.cart.pay + '</a></li>'
+        cartItems.append(
+            '<tr><td colspan="3" class="right noborder"><a href="#pay" class="button">' + i18n.cart.pay + '</a></td></tr>'
         );
-    
+            
         message.append(
             i18n.cart.name + ': (' + this.cart.countItems() + ') R$ ' + float2moeda( total.toString() )
         );
@@ -73,11 +75,10 @@ Katarogu.prototype.render = function() {
     });
     
     this.renderContainer();
+    this.renderCartBox();
     
     // events TODO: identificar melhor lugar para colocar
-    $('a[href="#toggleCartBox"]').click(function() { 
-        _this.toggleCartBox(); 
-    });
+    $('a[href="#toggleCartBox"]').colorbox({width:"50%",height:"50%", inline:true, href:"#toggleCartBox"});
     
     // gambiarra pra carregar o lightbox TODO: arrumar
     $("a[rel^='lightbox']").colorbox({transition:"none", width:"75%", height:"75%"});
@@ -121,14 +122,6 @@ Katarogu.prototype.pay = function() {
     
     frequest.append(_form);
     frequest.submit();
-}
-
-Katarogu.prototype.toggleCartBox = function() {
-    if ( $('#cart').is(':visible') ) {
-        $('#cart').toggle();
-    } else if ( this.cart.countItems() > 0 ) {
-        $('#cart').show();
-    }
 }
 
 var Katarogu = new Katarogu();
