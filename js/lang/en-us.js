@@ -6,6 +6,9 @@ var i18n = {
         pay:      "Pay",
         quantity: "Quantity",
         item:     "Item"
+    },
+    search: {
+        label: "Search"
     }
 }
 

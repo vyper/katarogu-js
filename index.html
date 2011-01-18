@@ -8,7 +8,6 @@
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/items.js"></script>
-    <script type="text/javascript" src="js/lang/en-us.js"></script>
 
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.tmpl.min.js"></script>
@@ -34,16 +33,17 @@
 
             <div id="search">
                 <form name="fsearch">
-                    <label for="searchInput">Search: <input type="text" name="searchInput" id="searchInput" /></label>
+                  <label for="searchInput" id="searchLabel">Search</label>
+                  <input type="text" name="searchInput" id="searchInput" />
                 </form>
             </div>
 
-            <h1>Katarogu</h1>
+            <h1 id="name">Katarogu</h1>
         </div>
         
         <div id="content">
             <ul id="products"></ul>
-            <form target="_blank" id="frequest" method="post"></form>
+            <form target="_blank" id="frequest" name="frequest" method="post"></form>
         </div>
 
         <div id="footer">
