@@ -67,39 +67,52 @@ Katarogu.prototype.renderCartBox = function() {
         });
     }
 }
-    
+
 Katarogu.prototype.render = function() {
     var _this = this;
 
-    // TODO: verificar se '$.getScript' é a melhor opção
-    $.getScript("js/lang/" + config.language + ".js", function() {
-        $( "#searchInput" ).val(null);
-        $( "#searchInput" ).keyup( function() { 
-            clearTimeout(this.timeout);
-            
-            this.timeout = setTimeout( function() {
-                _this.renderContainer();
-            }, config.searchInputTimeout);
-        });
+    $( "#searchInput" ).val(null);
+    $( "#searchInput" ).keyup( function() { 
+        clearTimeout(this.timeout);
         
-        _this.renderContainer();
-        _this.renderCartBox();
-        
-        /*
-         * TODO: inicialmente carregando apenas search e o title, mas provavelmente
-         * teremos mais itens para serem traduzidos no load
-         */
-        $('#searchLabel').empty().append(i18n.search.label);
-        $(document).attr('title', config.name);
-        $('#message').attr('title', i18n.cart.name);
-        $('#name').empty().append(config.name)
+        this.timeout = setTimeout( function() {
+            _this.renderContainer();
+        }, config.searchInputTimeout);
+    });
     
-        // events TODO: identificar melhor lugar para colocar
-        $('a[href="#toggleCartBox"]').colorbox({width:"50%",height:"50%", inline:true, 
-                                                href:"#toggleCartBox"});
-        
-        // gambiarra pra carregar o lightbox TODO: arrumar
-        $("a[rel^='lightbox']").colorbox({transition:"none", width:"75%", height:"75%"});
+    this.renderContainer();
+    this.renderCartBox();
+    
+    /*
+        * TODO: inicialmente carregando apenas search e o title, mas provavelmente
+        * teremos mais itens para serem traduzidos no load
+        */
+    $('#searchLabel').empty().append(i18n.search.label);
+    $(document).attr('title', config.name);
+    $('#message').attr('title', i18n.cart.name);
+    $('#name').empty().append(config.name)
+
+    // events TODO: identificar melhor lugar para colocar
+    $('a[href="#toggleCartBox"]').colorbox({ 
+        width: "50%",
+        height: "50%", 
+        inline: true, 
+        href:"#toggleCartBox"
+    });
+    
+    // gambiarra pra carregar o lightbox TODO: arrumar
+    $("a[rel^='lightbox']").colorbox({
+        transition: "none", 
+        width: "75%", 
+        height: "75%"
+    });
+}
+
+Katarogu.prototype.bootStrap = function() {
+    var _this = this;
+    
+    $.getScript("js/lang/" + config.language + ".js", function() {
+        _this.render( i18n );
     });
 }
 
